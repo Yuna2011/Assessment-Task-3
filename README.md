@@ -45,7 +45,8 @@ Talent in the AI Index refers to the strength and availability of skilled profes
 
 
 ## Data Dictionary
-| Header 1 | Header 2 | Header 3 |
-|----------|----------|----------|
-| Data A1  | Data B1  | Data C1  |
-| Data A2  | Data B2  | Data C2  |
+| Field | Datatype | Format for display | Description | Example | Validation |
+|----------|----------|----------| -------- | -------- | -------- |
+| Country  | object | XX...XX | Name of the country | Australia | Can be any amount of characters but must not include numbers. |
+| Talent  | float64 | NNN.NN | How many skilled people are available to work | 25.43 | Must be a decimal number to 2 decimal places. |
+| Total Score | float64 | NNN.NN | How advanced the country is in terms of AI | 33.86 | Must be a decimal number to 2 decimal places. |
