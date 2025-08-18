@@ -1,8 +1,11 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+dataset_df = pd.read_csv('dataset.csv')
+
 from data_module import (
     display_dataset_preview,
     display_visualisation,
     search_data,
-    save_changes
 )
 
 def main_menu():
@@ -18,7 +21,7 @@ def main_menu():
         if choice == '1':
             display_dataset_preview()
         elif choice == '2':
-            display_visualisation()
+            display_visualisation(dataset_df)
         elif choice == '3':
             search_data()
         elif choice == '4':
