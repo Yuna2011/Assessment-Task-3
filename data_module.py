@@ -1,4 +1,3 @@
-# data_module.py
 import matplotlib.pyplot as plt
 import pandas as pd
 dataset_df = pd.read_csv('dataset.csv')
