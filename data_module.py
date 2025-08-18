@@ -11,12 +11,12 @@ def display_dataset_preview():
 
 def display_visualisation():
     dataset_df.plot(
-               kind='line',
-               x='country',
-               y='percentage',
+               kind='Bar',
+               x='Country',
+               y='Talent''Total Score',
                color='black',
                alpha=0.3,
-               title='Correlation of arrival and distance'
+               title='Talent and Total Score'
               )
     plt.show()
     pass
