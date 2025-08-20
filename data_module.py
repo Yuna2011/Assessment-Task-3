@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-dataset_df = pd.read_csv('dataset.csv')
+Dataset1_df = pd.read_csv('Dataset1.csv')
 
 
 
 
 def display_dataset_preview():
-   total_rows = len(dataset_df)
+   total_rows = len(Dataset1_df)
    print(f"The dataset has {total_rows} rows.")
   
    # Ask how many rows they want to see (default: 5)
@@ -25,18 +25,18 @@ def display_dataset_preview():
            n = 5
   
    # Display the chosen number of rows
-   print(dataset_df.head(n))
+   print(Dataset1_df.head(n))
 
 
 
 
-def display_visualisation(dataset_df):
+def display_visualisation(Dataset1_df):
    # Sort by Total Score so the chart looks cleaner (optional)
-   dataset_df = dataset_df.sort_values("Total Score", ascending=False)
+   Dataset1_df = Dataset1_df.sort_values("Total Score", ascending=False)
 
 
    # Plot grouped bar chart
-   dataset_df.plot(
+   Dataset1_df.plot(
        kind='bar',
        x='Country',
        y=['Talent', 'Total Score'],  # multiple columns = grouped bars
@@ -61,7 +61,7 @@ def search_data():
    country_name = input("Enter the country you want to search for: ").strip()
   
    # Filter the dataset
-   filtered_df = dataset_df[dataset_df['Country'].str.lower() == country_name.lower()]
+   filtered_df = Dataset1_df[Dataset1_df['Country'].str.lower() == country_name.lower()]
   
    # Check if the country exists
    if filtered_df.empty:
