@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-dataset_df = pd.read_csv('dataset.csv')
+Dataset1_df = pd.read_csv('Dataset1.csv')
 
 from data_module import (
     display_dataset_preview,
@@ -21,7 +21,7 @@ def main_menu():
         if choice == '1':
             display_dataset_preview()
         elif choice == '2':
-            display_visualisation(dataset_df)
+            display_visualisation(Dataset1_df)
         elif choice == '3':
             search_data()
         elif choice == '4':
