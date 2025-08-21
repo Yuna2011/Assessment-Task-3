@@ -1,67 +1,60 @@
-import matplotlib.pyplot as plt
-import pandas as pd
-Dataset1_df = pd.read_csv('Dataset1.csv')
+import matplotlib.pyplot as plt  # Importing matplotlib
+import pandas as pd  # Importing pandas
+dataset_df = pd.read_csv('dataset.csv')  # Reading the dataset from a CSV file
 
 
 
 
-def display_dataset_preview():
-   total_rows = len(Dataset1_df)
-   print(f"The dataset has {total_rows} rows.")
+def display_dataset_preview():  # Function to display a preview of the dataset
+   total_rows = len(dataset_df)  # Get the total number of rows in the dataset
+   print(f"The dataset has 62 rows.")  # Display the total number of rows in the dataset
   
-   # Ask how many rows they want to see (default: 5)
-   n_input = input(f"Enter the number of rows to display (1-{total_rows}, default 5 (press enter)): ").strip()
+   n_input = input(f"Enter the number of rows to display (1-62, default 5 (press enter)): ").strip()  # Ask how many rows they want to see (default: 5)
   
-   if n_input == "":
-       n = 5
+   if n_input == "":  # If user presses enter without inputting a number
+       n = 5  # Default to 5 rows
    else:
        try:
-           n = int(n_input)
-           if n < 1 or n > total_rows:
-               print(f"Number out of range. Showing first 5 rows instead.")
-               n = 5
-       except ValueError:
-           print("Invalid input. Showing first 5 rows instead.")
-           n = 5
+           n = int(n_input)  # Convert input to integer
+           if n < 1 or n > total_rows:  # Check if the number is out of range
+               print(f"Number out of range. Showing first 5 rows instead.")  # Display error message for out of range input 
+               n = 5   #Default to 5 rows
+       except ValueError:  # If input is not a valid integer
+           print("Invalid input. Showing first 5 rows instead.")  # Display error message for invalid input
+           n = 5  # Default to 5 rows
   
-   # Display the chosen number of rows
-   print(Dataset1_df.head(n))
+   selected_columns = ['Country', 'Talent', 'Total score']  # Display the chosen number of rows
+   print(dataset_df[selected_columns].head(n))  # Display the first n rows of the selected columns
 
 
 
 
-def display_visualisation(Dataset1_df):
-   # Sort by Total Score so the chart looks cleaner (optional)
-   Dataset1_df = Dataset1_df.sort_values("Total Score", ascending=False)
+def display_visualisation(dataset_df):
 
-
-   # Plot grouped bar chart
-   Dataset1_df.plot(
-       kind='bar',
-       x='Country',
-       y=['Talent', 'Total Score'],  # multiple columns = grouped bars
-       figsize=(14, 8),
-       title='Talent vs Total Score by Country'
+   dataset_df.plot(  # Plot grouped bar chart
+       kind='bar',  # Specify the kind of plot
+       x='Country',  # x-axis is Country
+       y=['Talent', 'Total score'],  # Rultiple columns = grouped bars, y-axis is Talent and Total score
+       figsize=(14, 8),  # Set figure size
+       title='Talent vs Total Score by Country'  # Set title of the plot
    )
 
 
-   plt.ylabel("Scores")
-   plt.xticks(rotation=90)  # rotate country names for readability
-   plt.legend(title="Key")
-   plt.tight_layout()
-   plt.show()
+   plt.ylabel("Scores")  # Set y-axis label
+   plt.xticks(rotation=90)  # Rotate country names for readability
+   plt.legend(title="Key")  # Set legend title
+   plt.tight_layout()  # Adjust layout to prevent overlap
+   plt.show()  # Show the plot
 
 
 
 
 
 
-def search_data():
-   # Ask user for country name
-   country_name = input("Enter the country you want to search for: ").strip()
+def search_data():  # Function to search or filter data by country
+   country_name = input("Enter the country you want to search for: ").strip()  # Ask user for country name
   
-   # Filter the dataset
-   filtered_df = Dataset1_df[Dataset1_df['Country'].str.lower() == country_name.lower()]
+   filtered_df = dataset_df[dataset_df['Country'].str.lower() == country_name.lower()]  # Filter the dataset
   
    # Check if the country exists
    if filtered_df.empty:
@@ -70,12 +63,8 @@ def search_data():
   
    # Get Talent and Total Score
    talent = filtered_df['Talent'].values[0]   
-   total_score = filtered_df['Total Score'].values[0]
+   total_score = filtered_df['Total score'].values[0]
   
    # Print the results in one line
    print(f"Talent = {talent}")
    print(f"Total Score = {total_score}")
-
-# search_data()
-
-
